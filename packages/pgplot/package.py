@@ -18,6 +18,9 @@ class Pgplot(Package):
 
     patch('arts.patch')
 
+    def setup_environment(self, spack_env, run_env):
+        run_env.prepend_path('PGPLOT_DIR', self.prefix)
+
     def install(self, spec, prefix):
         env['PGPLOT_LIB'] = "-L"+prefix.lib+" -lpgplot"
         env['CPGPLOT_LIB'] = "-L"+prefix.lib+" -lcpgplot -lpgplot"
@@ -30,3 +33,24 @@ class Pgplot(Package):
         makemake(src,"linux","gfortran_gcc")
         make()
         make('cpg')
+        os.mkdir('bin', 0755)
+        install('pgxwin_server', prefix.bin)
+        install('cpgdemo', prefix.bin)
+        install('pgbind', prefix.bin)
+        install('pgdemo1', prefix.bin)
+        install('pgdemo2', prefix.bin)
+        install('pgdemo3', prefix.bin)
+        install('pgdemo4', prefix.bin)
+        install('pgdemo5', prefix.bin)
+        install('pgdemo6', prefix.bin)
+        install('pgdemo7', prefix.bin)
+        install('pgdemo8', prefix.bin)
+        install('pgdemo9', prefix.bin)
+        install('pgdemo10', prefix.bin)
+        install('pgdemo11', prefix.bin)
+        install('pgdemo12', prefix.bin)
+        install('pgdemo13', prefix.bin)
+        install('pgdemo14', prefix.bin)
+        install('pgdemo15', prefix.bin)
+        install('pgdemo16', prefix.bin)
+        install('pgdemo17', prefix.bin)
