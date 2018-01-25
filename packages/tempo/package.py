@@ -1,4 +1,5 @@
 from spack import *
+import os
 
 
 class Tempo(AutotoolsPackage):
@@ -18,11 +19,13 @@ class Tempo(AutotoolsPackage):
         run_env.prepend_path('TEMPO', self.prefix)
 
     def install(self, spec, prefix):
-        install_tree('clock', prefix + '/clock')
-        install_tree('ephem', prefix + '/ephem')
-        install('obsys.dat', prefix)
+        os.mkdir('tempo', 0755)
+        filter_file(r'character\*80',r'character*160','src/tparin.f')
+        install_tree('clock', prefix + '/tempo/clock')
+        install_tree('ephem', prefix + '/tempo/ephem')
+        install('obsys.dat', prefix + '/tempo')
         install('tempo.cfg', prefix)
         install('tempo.hlp', prefix)
-        install_tree('tzpar', prefix + '/tzpar')
+        install_tree('tzpar', prefix + '/tempo/tzpar')
         make()
         make('install')
