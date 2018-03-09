@@ -19,10 +19,12 @@ class Psrdada(AutotoolsPackage):
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
 
-    depends_on('cuda@8.0.61')
+    depends_on('cuda')
     depends_on('fftw@3.3:')
     depends_on('gsl')
     depends_on('hwloc')
+
+    patch('arts.patch')
 
     def autoreconf(self, spec, prefix):
         autoreconf('--install', '--force')
