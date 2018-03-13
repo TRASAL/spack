@@ -12,9 +12,14 @@ class Ymw16(Package):
 
     patch('arts.patch')
 
+    def setup_environment(self, spack_env, run_env):
+        run_env.prepend_path('YMW16_DIR', self.prefix)
+
     def install(self, spec, prefix):
         src = os.getcwd()
         make_ymw16 = which(src + "/make_ymw16")
         make_ymw16()
         os.mkdir(prefix+'/bin', 0755)
         install('ymw16', prefix.bin)
+        install('ymw16par.txt', prefix)
+        install('spiral.txt', prefix)
