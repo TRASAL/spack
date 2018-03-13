@@ -1,0 +1,7 @@
+--- make_ymw16	2018-03-13 15:29:31.000000000 +0100
++++ arts/make_ymw16	2018-03-13 15:28:56.000000000 +0100
+@@ -1,3 +1,4 @@
++#!/bin/bash
+ rm *.o rm *.a
+ gcc -g -c dmdtau.c dora.c fermibubble.c frb_d.c galcen.c gum.c lmc.c localbubble.c ne_crd.c nps.c smc.c spiral.c thick.c thin.c ymw16par.c
+ ar -rvs ymw16.a *.o   
