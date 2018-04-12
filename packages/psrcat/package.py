@@ -8,7 +8,7 @@ class Psrcat(Package):
     homepage = "http://www.atnf.csiro.au/people/pulsar/psrcat/"
     url = "http://www.atnf.csiro.au/people/pulsar/psrcat/downloads/psrcat_pkg.tar.gz"
 
-    version('1.58', 'ae085894e96b12bf1b1c91e65463c83a')
+    version('1.58', '0928ff35f1856655f9da039e35a94820')
 
     def setup_environment(self, spack_env, run_env):
         run_env.prepend_path('PSRCAT_FILE', self.prefix+"/psrcat.db")
