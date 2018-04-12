@@ -16,7 +16,7 @@ class Tempo(AutotoolsPackage):
     depends_on('m4',       type='build')
 
     def setup_environment(self, spack_env, run_env):
-        run_env.prepend_path('TEMPO', self.prefix)
+        run_env.prepend_path('TEMPO', self.prefix + '/tempo')
 
     def install(self, spec, prefix):
         os.mkdir('tempo', 0755)
@@ -24,8 +24,8 @@ class Tempo(AutotoolsPackage):
         install_tree('clock', prefix + '/tempo/clock')
         install_tree('ephem', prefix + '/tempo/ephem')
         install('obsys.dat', prefix + '/tempo')
-        install('tempo.cfg', prefix)
-        install('tempo.hlp', prefix)
+        install('tempo.cfg', prefix + '/tempo')
+        install('tempo.hlp', prefix + '/tempo')
         install_tree('tzpar', prefix + '/tempo/tzpar')
         make()
         make('install')
