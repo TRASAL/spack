@@ -8,19 +8,20 @@ class Tempo(AutotoolsPackage):
     homepage = "http://tempo.sourceforge.net/"
     url      = "https://git.code.sf.net/p/tempo/tempo"
 
-    version('2018-01-15', git='https://git.code.sf.net/p/tempo/tempo', commit='ce072d')
+    version('2018-04-24', git='https://git.code.sf.net/p/tempo/tempo', commit='13e12c')
 
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
 
+    patch('fix_path_length.patch', level=0)
+
     def setup_environment(self, spack_env, run_env):
         run_env.prepend_path('TEMPO', self.prefix + '/tempo')
 
     def install(self, spec, prefix):
         os.mkdir('tempo', 0755)
-        filter_file(r'character\*80',r'character*160','src/tparin.f')
         install_tree('clock', prefix + '/tempo/clock')
         install_tree('ephem', prefix + '/tempo/ephem')
         install('obsys.dat', prefix + '/tempo')

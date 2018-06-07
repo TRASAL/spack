@@ -1,0 +1,51 @@
+diff --git src/tempo.f src/tempo.f
+index d50028e..c61febd 100644
+--- src/tempo.f
++++ src/tempo.f
+@@ -145,15 +145,15 @@ C  99	gro.99			newval
+         include 'toa.h'
+ 
+ 	logical lw, nostop
+-        logical memerr
+-	character*640 infile
+-        character*80 ut1file,resfile1,
++      logical memerr
++	character*4096 infile
++        character*4096 ut1file,resfile1,
+      +       resfile2,listfile,fname,line,tdbfile,s,hlpfile
+-        character*640 obsyfile
+-        character*80 path
+-        character*160 cfgpath
+-	character*160 npulsefile, infofile, phisunfile, dmxnfile
+-        character*160 dopplerfile
++        character*4096 obsyfile
++        character*4096 path
++        character*4096 cfgpath
++	character*4096 npulsefile, infofile, phisunfile, dmxnfile
++        character*4096 dopplerfile
+ 	character date*9,date2*9,damoyr*9,label*12,parfile*160
+ 	integer time
+         real*8 xmean(NPA),alng(NOBSMAX)
+diff --git src/tparin.f src/tparin.f
+index bded455..4b0116b 100644
+--- src/tparin.f
++++ src/tparin.f
+@@ -21,12 +21,12 @@ c     following variables are set in this routine:
+       integer lpth
+       integer nparmax, nptsmax
+       real*8 version
+-      character*160 npulsefile
+-      character*640 infile
+-      character*80 path
+-      character*80 resfile1
+-      character*80 hlpfile
+-      character*160 parfile
++      character*4096 npulsefile
++      character*4096 infile
++      character*4096 path
++      character*4096 resfile1
++      character*4096 hlpfile
++      character*4096 parfile
+       character*160 key
+       character*160 val
+       integer err
