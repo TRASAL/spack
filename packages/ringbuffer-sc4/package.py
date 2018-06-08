@@ -2,7 +2,7 @@ from spack import *
 import os
 
 
-class RingbufferSC4(CMakePackage):
+class RingbufferSc4(CMakePackage):
     homepage = "https://github.com/AA-ALERT/ringbuffer-sc4"
     url = "https://github.com/AA-ALERT/ringbuffer-sc4"
 
