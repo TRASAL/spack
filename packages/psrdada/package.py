@@ -8,12 +8,8 @@ class Psrdada(AutotoolsPackage):
     instrumentation for pulsar astronomy."""
 
     homepage = "http://psrdada.sourceforge.net"
-    #url      = "http://arts0.apertif/~sipior/psrdada-1.0.tar.gz"
-    #version('1.2', '1366ea321f87084bb8e51ceecaed738b')
-    #version('1.1', '02741557a1181e71ce4fcd132d0d97d5')
-    #version('1.0', 'a1e4ed800601999679406f21ab9eeed5')
 
-    version('2016-12-15', git='https://git.code.sf.net/p/psrdada/code',
+    version('2018-06-06', git='https://git.code.sf.net/p/psrdada/code',
             commit='754a618b321cf0b328d34c80c995ad0959ddf4e8')
 
 
@@ -27,7 +23,8 @@ class Psrdada(AutotoolsPackage):
     depends_on('gsl')
     depends_on('hwloc')
 
-    #patch('arts.patch')
+    patch('fix_pragma.patch', level=1)
+    patch('missing_cuda_include.patch', level=1)
 
     def autoreconf(self, spec, prefix):
         autoreconf('--install', '--force')
