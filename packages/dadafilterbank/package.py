@@ -5,9 +5,10 @@ import os
 class Dadafilterbank(CMakePackage):
     homepage = "https://github.com/AA-ALERT/dadafilterbank"
 
-    version('2018-06-11',
-            git='https://github.com/gijzelaerr/dadafilterbank',
-            commit='5acbe65159ca6dd8d3525fa31d8714815f79af6d')
+
+    version('2018-06-13',
+            git='https://github.com/AA-ALERT/dadafilterbank',
+            commit='fa829f940252772c8363c5e9b5c4057daefd605f')
 
     depends_on('cuda')
     depends_on('psrdada')
