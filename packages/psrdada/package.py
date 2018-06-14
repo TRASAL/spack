@@ -37,11 +37,11 @@ class Psrdada(AutotoolsPackage):
     def configure_args(self):
         args = []
         if 'fftw' in self.spec:
-            args.push('--with-fftw3-dir=%s' % self.spec['fftw'].prefix)
+            args.append('--with-fftw3-dir=%s' % self.spec['fftw'].prefix)
         if 'gsl' in self.spec:
-            args.push('--with-gsl-dir=%s' % self.spec['gsl'].prefix)
+            args.append('--with-gsl-dir=%s' % self.spec['gsl'].prefix)
         if 'cuda' in self.spec:
-            args.push('--with-cuda-dir=%s' % self.spec['cuda'].prefix)
+            args.append('--with-cuda-dir=%s' % self.spec['cuda'].prefix)
         if 'hwloc' in self.spec:
-            args.push('--with-hwloc-dir=%s' % self.spec['hwloc'].prefix)
+            args.append('--with-hwloc-dir=%s' % self.spec['hwloc'].prefix)
         return args
