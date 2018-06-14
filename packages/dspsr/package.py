@@ -1,16 +1,17 @@
 from spack import *
 import os
-from subprocess import call
+from subprocess import check_call
 
 class Dspsr(AutotoolsPackage):
     homepage = "http://dspsr.sourceforge.net/"
-    url = "git://git.code.sf.net/p/dspsr/code"
+    url = "https://git.code.sf.net/p/dspsr/code"
 
     version('2018-05-22',
             git=url,
             commit='85982f596796dc2c3a9b4da7bbbaa9b28246c7fb')
 
     depends_on('psrdada')
+    depends_on('psrchive')
     depends_on('cuda')
     depends_on('swig')
     depends_on('gsl')
@@ -20,4 +21,4 @@ class Dspsr(AutotoolsPackage):
             f.write("dada fits sigproc\n")
 
         # don't know how to call a script the spack way
-        call("./bootstrap")
+        check_call("./bootstrap")
