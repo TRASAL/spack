@@ -6,9 +6,13 @@ class Pgplot(Package):
     """The PGPLOT Graphics Subroutine Library is a Fortran- or C-callable, device-independent graphics package for making simple scientific graphs."""
 
     homepage = "https://www.astro.caltech.edu/~tjp/pgplot"
-    url      = "ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot5.2.tar.gz"
+    #url      = "ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot5.2.tar.gz"
 
-    version('5.2', 'e8a6e8d0d5ef9d1709dfb567724525ae')
+    # for now we need to use an ubuntu mirror since ftp is not working at astron
+    url = "http://archive.ubuntu.com/ubuntu/pool/multiverse/p/pgplot5/pgplot5_5.2.2.orig.tar.gz"
+
+    #version('5.2', 'e8a6e8d0d5ef9d1709dfb567724525ae')
+    version('5.2.2', '1f1c9aa17eeec9a2fb23fd15a0e4a91dcc49ddc1')
 
     parallel = False
 
