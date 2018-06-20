@@ -30,8 +30,30 @@ Now you need to bootstrap your new environment:
 $ spack bootstrap
 ```
 
+For now we base everything on GCC 6.4.0:
+```
+$ spack install gcc@6.4.0
+$ spack module load gcc@6.4.0
+$ spack compiler find
+```
+
+
 After which you can start spacking astronomy packages:
 
 ```
-$ spack install tempo
+$ spack install tempo %gcc@6.4.0
 ```
+
+Notes:
+
+If you run into troubles spacking dspsr with an error like:
+```
+openmpi requires hwloc version :1.999, but spec asked for 2.0.1   
+```
+
+you have ran into [this issue](https://github.com/spack/spack/issues/7938)
+which you can solve by running:
+```
+$ spack install ompss ^hwloc@1.11.9
+```
+
