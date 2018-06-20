@@ -2,18 +2,19 @@ from spack import *
 
 
 class PsrfitsUtils(AutotoolsPackage):
-    """FIXME: Put a proper description of your package here."""
+    """Utility library for working with search- and fold-mode PSRFITS pulsar data files"""
 
-    # FIXME: Add a proper url for your package's homepage here.
     homepage = "https://github.com/demorest/psrfits_utils"
-    url      = "https://github.com/demorest/psrfits_utils.git"
+    url = homepage
 
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
 
-    version('2018-01-25', git='https://github.com/demorest/psrfits_utils', commit='1fbf51b')
+    version('2017-01-20',
+            git=url,
+            commit='1fbf51b')
 
     depends_on('cfitsio')
 
