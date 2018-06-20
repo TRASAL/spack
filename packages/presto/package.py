@@ -26,9 +26,11 @@ class Presto(MakefilePackage):
         spack_env.set('PGPLOT_DIR', self.spec['pgplot'].prefix)
 
     def install(self, spec, prefix):
+        os.mkdir(prefix.bin)
         for i in os.listdir('bin'):
             install('bin/' + i, prefix.bin)
 
+        os.mkdir(prefix.lib)
         for i in os.listdir('lib'):
             if i.endswith('.so'):
                 install('lib/' + i, prefix.lib)
