@@ -1,6 +1,5 @@
-import os
+from glob import glob
 from spack import *
-
 
 class Presto(MakefilePackage):
     """Open source pulsar search and analysis toolkit """
@@ -22,15 +21,14 @@ class Presto(MakefilePackage):
     def setup_environment(self, spack_env, run_env):
         self.source_path = "{}/{}-{}/".format(self.stage.path, self.name, self.version)
         spack_env.set('PRESTO',  self.source_path)
-        spack_env.set('LD_LIBRARY_PATH', self.source_path + "/lib")
-        spack_env.set('PGPLOT_DIR', self.spec['pgplot'].prefix)
+        spack_env.append_path('LD_LIBRARY_PATH', self.source_path + "/lib")
 
     def install(self, spec, prefix):
-        os.mkdir(prefix.bin)
-        for i in os.listdir('bin'):
-            install('bin/' + i, prefix.bin)
+        mkdir(prefix.bin)
+        mkdir(prefix.lib)
 
-        os.mkdir(prefix.lib)
-        for i in os.listdir('lib'):
-            if i.endswith('.so'):
-                install('lib/' + i, prefix.lib)
+        for i in glob('bin/*'):
+            install(i, prefix.bin)
+
+        for i in glob('lib/*.so'):
+            install(i, prefix.lib)
