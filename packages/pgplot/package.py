@@ -22,6 +22,9 @@ class Pgplot(Package):
 
     patch('arts.patch')
 
+    def setup_dependent_environment(self, spack_env, run_env, dependent_spec):
+        spack_env.prepend_path('PGPLOT_DIR', self.prefix)
+
     def setup_environment(self, spack_env, run_env):
         run_env.prepend_path('PGPLOT_DIR', self.prefix)
 
