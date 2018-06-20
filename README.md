@@ -1,3 +1,7 @@
+# About
+
+this is a spack repository containing radio astronomy software, mostly used for APERTIF.
+
 # Usage
 
 First you need to make sure you can compile things and have curl available.
