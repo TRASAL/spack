@@ -16,6 +16,7 @@ class Tempo(AutotoolsPackage):
     depends_on('m4',       type='build')
 
     patch('fix_path_length.patch', level=0)
+    patch('fix_wsrt_code.patch', level=0)
 
     def setup_environment(self, spack_env, run_env):
         run_env.prepend_path('TEMPO', self.prefix + '/tempo')
