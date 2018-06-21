@@ -29,7 +29,7 @@ class PyCoastGuard(PythonPackage):
             self.prefix.lib,
             'python{0}'.format(python_version),
             'site-packages',
-            'coast_gaurd')
+            'coast_guard')
 
         mkdirp(module_path)
         mkdirp(prefix.bin)
