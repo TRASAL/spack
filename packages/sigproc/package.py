@@ -18,6 +18,9 @@ class Sigproc(AutotoolsPackage):
     depends_on('libtool', type='build')
     depends_on('m4', type='build')
     depends_on('zlib', type='build')
+
+    depends_on('fftw@3.3:')
+    depends_on('tempo2')
     
     version('2017-11-13',
             git=url,
