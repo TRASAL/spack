@@ -61,3 +61,7 @@ class Pgplot(Package):
         install('pgdemo15', prefix.bin)
         install('pgdemo16', prefix.bin)
         install('pgdemo17', prefix.bin)
+
+	os.mkdir(prefix.include)
+	install('cpgplot.h', prefix.include)
+	
