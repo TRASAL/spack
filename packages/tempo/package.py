@@ -19,7 +19,7 @@ class Tempo(AutotoolsPackage):
     patch('fix_wsrt_code.patch', level=0)
 
     def setup_environment(self, spack_env, run_env):
-        run_env.prepend_path('TEMPO', self.prefix + '/tempo')
+        run_env.set('TEMPO', self.prefix + '/tempo')
 
     def install(self, spec, prefix):
         os.mkdir('tempo', 0755)
