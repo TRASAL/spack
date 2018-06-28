@@ -29,3 +29,9 @@ class Peasoup(MakefilePackage):
             f.write(makefile_inc.format(install_dir=prefix,
                                          cuda_dir=spec['cuda'].prefix,
                                          dedisp_dir=spec['dedisp'].prefix))
+
+    def install(self, spec, prefix):
+        mkdir(prefix.bin)
+
+        for i in glob('bin/*'):
+            install(i, prefix.bin)
