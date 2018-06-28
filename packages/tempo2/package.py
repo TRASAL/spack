@@ -9,10 +9,21 @@ class Tempo2(AutotoolsPackage):
 
     version('2018.02.1', '1c9e881c6f8e3c40e6d79a638a702e8c4c09880b')
 
+    variant("x11", default=False, description="Enable GUI")
+
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
+
+    depends_on('libx11', when="+x11")
+
+    def configure_args(self):
+        args = []
+        if "+x11" in self.spec:
+            args.append("--with-x")
+        return args
+
 
     def setup_environment(self, spack_env, run_env):
 	run_env.prepend_path('TEMPO2', self.prefix) 
