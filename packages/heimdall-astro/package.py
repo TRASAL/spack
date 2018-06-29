@@ -16,11 +16,11 @@ class HeimdallAstro(AutotoolsPackage):
     depends_on('m4',       type='build')
 
     depends_on('cuda')
-    depends_on('dedisp')
+    depends_on('dedisp-flexi')
     depends_on('psrdada')
     
     def configure_args(self):
         args = []
-        args.append('--with-dedisp-dir=%s' % self.spec['dedisp'].prefix)
+        args.append('--with-dedisp-dir=%s' % self.spec['dedisp-flexi'].prefix)
         args.append('--with-psrdada-dir=%s' % self.spec['psrdada'].prefix)
 	return args
