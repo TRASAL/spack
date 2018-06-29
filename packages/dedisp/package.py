@@ -1,6 +1,7 @@
 from spack import *
 
 makefile_inc = """
+GPU_ARCH = sm_61  # this is for geforce 1080 and higher
 CUDA_PATH ?= {cuda_path}
 CUDA_DIR   ?= $(CUDA_PATH)
 THRUST_DIR ?= $(CUDA_DIR)/include
@@ -25,12 +26,10 @@ UVCFLAGS = "-DUSE_NVTX"
 """
 
 class Dedisp(MakefilePackage):
-    homepage = "https://github.com/ewanbarr/dedisp"
-    url = "https://github.com/ewanbarr/dedisp"
-    # there are multiple version floating around
-    #url = "https://github.com/ajameson/dedisp"
+    homepage = "https://github.com/ajameson/dedisp"
+    url = homepage
 
-    version('2017-11-27', git=url, commit='7aa2a81d77401767e37d1084ce692e5288433f66')
+    version('2018-04-26', git=url, commit='8a3d017cdb97e3d4ea2a423604602e04cde03b0e')
 
     depends_on('cuda')
 
