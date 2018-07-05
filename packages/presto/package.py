@@ -16,6 +16,8 @@ class Presto(MakefilePackage):
     depends_on('glib')
     depends_on('pgplot')
 
+    patch('add_wsrt.patch', level=1)
+
     build_directory = "src"
 
     def setup_environment(self, spack_env, run_env):

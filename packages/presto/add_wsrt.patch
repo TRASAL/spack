@@ -1,0 +1,21 @@
+--- a/src/sigproc_fb.c	2018-07-05 14:20:04.000000000 +0200
++++ b/src/sigproc_fb.c	2018-07-05 14:20:15.000000000 +0200
+@@ -113,7 +113,7 @@
+         s->beam_FWHM = default_beam;
+         break;
+     case 10:
+-        strcpy(s->telescope, "SRT");
++        strcpy(s->telescope, "WSRT");
+         s->beam_FWHM = default_beam;
+         break;
+     case 11:
+@@ -181,6 +181,9 @@
+     case 12:
+         strcpy(string, "PDEV");
+         break;
++    case 15:
++        strcpy(string, "ARTS");
++        break;
+     case 20:
+         strcpy(string, "CHIME+PSR");
+         break;
