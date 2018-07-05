@@ -10,18 +10,31 @@ class Tempo2(AutotoolsPackage):
     version('2018.02.1', '1c9e881c6f8e3c40e6d79a638a702e8c4c09880b')
 
     variant("x11", default=False, description="Enable GUI")
+    variant("gsl", default=False, description="Enable GSL")
 
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
 
+    depends_on('cfitsio')
+    depends_on('pgplot')
+    depends_on('fftw@3.3:')
+
     depends_on('libx11', when="+x11")
+    depends_on('gsl', when="+gsl")
+
+    patch('fix_gets.patch', level=1)
 
     def configure_args(self):
-        args = []
+        args = ['--with-fftw3-dir=' + self.spec['fftw'].prefix,
+                '--with-cfitsio-dir=' + self.spec['cfitsio'].prefix]
         if "+x11" in self.spec:
             args.append("--with-x")
+
+        if "+gsl" in self.spec:
+            args.append("--with-gsl-prefix=" + self.spec['gsl'].prefix)
+
         return args
 
 
