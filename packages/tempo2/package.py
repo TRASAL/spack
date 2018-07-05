@@ -1,4 +1,6 @@
 from spack import *
+from shutil import copytree
+import os
 
 
 class Tempo2(AutotoolsPackage):
@@ -37,6 +39,10 @@ class Tempo2(AutotoolsPackage):
 
         return args
 
+    def configure(self, spec, prefix):
+	if os.access('Makefile', os.R_OK):
+		make('distclean')
+	configure()
 
     def setup_environment(self, spack_env, run_env):
 	run_env.prepend_path('TEMPO2', self.prefix) 
@@ -47,3 +53,4 @@ class Tempo2(AutotoolsPackage):
         make('plugins')
         make('install')
         make('plugins-install')
+	copytree('T2runtime', prefix + '/T2runtime')
