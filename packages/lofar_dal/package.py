@@ -28,9 +28,9 @@ class LofarDal(CMakePackage):
     homepage = "https://github.com/nextgen-astrodata/DAL"
     url = homepage
 
-    version('2016-06-18', git=url, commit='45c3cbf0cc39f98a0341b3bc734743066a093adf')
+    version('2018-07-05-a', git=url, commit='503808ce361abac206622c7b67d6b49b26461540')
 
-    depends_on('hdf5')
+    depends_on('hdf5 -mpi')
     depends_on('python@2.7:')
     depends_on('py-numpy')
     depends_on('swig')
