@@ -8,7 +8,7 @@ class RingbufferSc4(CMakePackage):
 
     version('2018-06-13',
             git='https://github.com/AA-ALERT/ringbuffer-sc4',
-            commit='603814db9767a663b6b6b38bcdbbb91c1f70da3a')
+            commit='a7e6fcf0d3dd0ef23240789d7203415a58129612')
 
     depends_on('cuda')
     depends_on('psrdada')
