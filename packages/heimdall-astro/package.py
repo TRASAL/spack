@@ -18,6 +18,9 @@ class HeimdallAstro(AutotoolsPackage):
     depends_on('cuda')
     depends_on('dedisp-flexi')
     depends_on('psrdada')
+    depends_on('gsl')
+    depends_on('hwloc')
+    depends_on('fftw')
     
     def configure_args(self):
         args = []
