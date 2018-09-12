@@ -3,9 +3,7 @@ import os
 
 
 class Sigpyproc(PythonPackage):
-    #homepage = "https://github.com/ewanbarr/sigpyproc"
-    # switch to a PR until merged https://github.com/ewanbarr/sigpyproc/pull/8
-    homepage = "https://github.com/telegraphic/sigpyproc"
+    homepage = "https://github.com/ewanbarr/sigpyproc"
 
     version('2018-05-30',
             git=homepage,
