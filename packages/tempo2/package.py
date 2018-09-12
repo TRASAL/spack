@@ -45,12 +45,13 @@ class Tempo2(AutotoolsPackage):
 	configure()
 
     def setup_environment(self, spack_env, run_env):
-	run_env.prepend_path('TEMPO2', self.prefix) 
-	spack_env.prepend_path('TEMPO2', self.prefix) 
+	run_env.set('TEMPO2', self.prefix)
+	spack_env.set('TEMPO2', self.prefix)
 
     def install(self, spec, prefix):
         make()
         make('plugins')
         make('install')
         make('plugins-install')
-	copytree('T2runtime', prefix + '/T2runtime')
+        for subdir in os.listdir('T2runtime'):
+            copytree('T2runtime/'+subdir, self.prefix+'/'+subdir)
