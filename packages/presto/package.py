@@ -23,7 +23,9 @@ class Presto(MakefilePackage):
     def setup_environment(self, spack_env, run_env):
         self.source_path = "{}/{}-{}/".format(self.stage.path, self.name, self.version)
         spack_env.set('PRESTO',  self.source_path)
+        run_env.set('PRESTO', self.prefix)
         spack_env.append_path('LD_LIBRARY_PATH', self.source_path + "/lib")
+        run_env.append_path('PYTHONPATH', self.prefix+"/lib/python")
 
     def install(self, spec, prefix):
         mkdir(prefix.bin)
@@ -34,3 +36,9 @@ class Presto(MakefilePackage):
 
         for i in glob('lib/*.so'):
             install(i, prefix.lib)
+
+        for i in glob('lib/*txt'):
+            install(i, prefix.lib)
+
+        install('lib/pulsars.cat', prefix.lib)
+        install_tree('lib/python', prefix.lib + '/python')
