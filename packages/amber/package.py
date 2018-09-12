@@ -39,12 +39,6 @@ class Amber(CMakePackage):
     variant("lofar", default=False, description="Enable LOFAR HDF5 file format support.")
     variant("psrdada", default=False, description="Enable PSRDADA ringbuffer support.")
 
-    deps = ""
-    if "+lofar" in self.spec:
-        deps += " +lofar"
-    if "+psrdada" in self.spec:
-        deps += " +psrdada"
-
     depends_on("cmake@3.10:")
     depends_on("googletest")
     depends_on("cuda@9.0.176")
@@ -55,19 +49,27 @@ class Amber(CMakePackage):
     depends_on("libisautils@development", when="@development")
     depends_on("libisaopencl")
     depends_on("libisaopencl@development", when="@development")
-    depends_on("astrodata" + deps)
-    depends_on("astrodata@development" + deps, when="@development")
-    depends_on("dedispersion" + deps)
-    depends_on("dedispersion@development" + deps, when="@development")
-    depends_on("integration" + deps)
-    depends_on("integration@development" + deps, when="@development")
-    depends_on("snr" + deps)
-    depends_on("snr@development" + deps, when="@development")
+    depends_on("astrodata")
+    depends_on("astrodata +lofar", when="+lofar")
+    depends_on("astrodata +psrdada", when="+psrdada")
+    depends_on("astrodata@development", when="@development")
+    depends_on("dedispersion")
+    depends_on("dedispersion +lofar", when="+lofar")
+    depends_on("dedispersion +psrdada", when="+psrdada")
+    depends_on("dedispersion@development", when="@development")
+    depends_on("integration")
+    depends_on("integration +lofar", when="+lofar")
+    depends_on("integration +psrdada", when="+psrdada")
+    depends_on("integration@development", when="@development")
+    depends_on("snr")
+    depends_on("snr +lofar", when="+lofar")
+    depends_on("snr +psrdada", when="+psrdada")
+    depends_on("snr@development", when="@development")
     
 
     def setup_environment(self, spack_env, run_env):
-    	if "+lofar" in self.spec:
-		spack_env.set("LOFAR", True)
-	if "+psrdada" in self.spec:
-		spack_env.set("PSRDADA", True)
+        if "+lofar" in self.spec:
+            spack_env.set("LOFAR", True)
+        if "+psrdada" in self.spec:
+            spack_env.set("PSRDADA", True)
 
