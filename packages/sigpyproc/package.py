@@ -7,7 +7,7 @@ class Sigpyproc(PythonPackage):
 
     version('2018-05-30',
             git=homepage,
-            commit='a18a1e201b69b7babb6dd95f6e994d7317b67dc5')
+            commit='e003fdf37f2ded9d549a386d993547eca479a43e')
 
     depends_on('python')
     depends_on('py-setuptools')
