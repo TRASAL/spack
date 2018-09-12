@@ -44,7 +44,7 @@ class Astrodata(CMakePackage):
     depends_on("libisautils")
     depends_on("hdf5 +cxx -mpi -debug -fortran", when="+lofar")
     depends_on("psrdada", when="+psrdada")
-    depends_on("cuda%gcc@4.8.5", when="+psrdada")
+    depends_on("cuda@9.0.176", when="+psrdada")
 
     def setup_environment(self, spack_env, run_env):
         if "+lofar" in self.spec:

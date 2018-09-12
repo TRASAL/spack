@@ -41,7 +41,7 @@ class Integration(CMakePackage):
 
     depends_on("cmake@3.10:")
     depends_on("googletest")
-    depends_on("cuda%gcc@4.8.5")
+    depends_on("cuda@9.0.176")
     depends_on("libisautils")
     depends_on("libisaopencl")
     depends_on("astrodata")
