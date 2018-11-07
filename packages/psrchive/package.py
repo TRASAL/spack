@@ -29,7 +29,7 @@ class Psrchive(AutotoolsPackage):
         return args
 
     def setup_environment(self, spack_env, run_env):
-        run_env.set('PGPLOT_FONT', self.spec['pgplot'].prefix)
+        run_env.set('PGPLOT_FONT', self.spec['pgplot'].prefix+'/grfont.dat')
 
     def autoreconf(self, spec, prefix):
         bootstrap = which(os.getcwd() + '/bootstrap')
