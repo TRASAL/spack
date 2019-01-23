@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index b1c513f..7459f75 100755
+--- a/setup.py
++++ b/setup.py
+@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
+ import versioneer
+ 
+ install_requires = [
+-    "astropy>=1.2",
++    "astropy>=1.2,<2",
+     "lxml>=2.3",
+     'iso8601',
+     'orderedmultidict',
