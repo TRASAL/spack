@@ -26,15 +26,14 @@
 from spack import *
 
 
-class Amber(CMakePackage):
-    """A many-core transient searching pipeline, designed mainly to search in real-time for Fast Radio Bursts."""
+class Rfim(CMakePackage):
+    """Radio Frequency Interference (RFI) mitigation algorithms."""
 
-    homepage = "https://github.com/AA-ALERT/AMBER"
-    url      = "https://github.com/AA-ALERT/AMBER/archive/2.1.tar.gz"
+    homepage = "https://github.com/AA-ALERT/RFIm"
+    url      = "https://github.com/AA-ALERT/RFIm.git"
 
-    version("master", git="https://github.com/AA-ALERT/AMBER.git", branch="master")
-    version("development", git="https://github.com/AA-ALERT/AMBER.git", branch="development")
-    version("2.1", "f67d3d27dd1b946df56f22f7f3fa200b", url="https://github.com/AA-ALERT/AMBER/archive/2.1.tar.gz")
+    version("master", git=url, branch="master")
+    version("development", git=url, branch="development")
 
     variant("lofar", default=False, description="Enable LOFAR HDF5 file format support.")
     variant("psrdada", default=False, description="Enable PSRDADA ringbuffer support.")
@@ -42,38 +41,15 @@ class Amber(CMakePackage):
     depends_on("cmake@3.10:")
     depends_on("googletest")
     depends_on("cuda@9.0.176")
-    depends_on("hwloc")
-    depends_on("fftw")
-    depends_on("gsl")
     depends_on("libisautils")
-    depends_on("libisautils@development", when="@development")
     depends_on("libisaopencl")
-    depends_on("libisaopencl@development", when="@development")
     depends_on("astrodata")
     depends_on("astrodata +lofar", when="+lofar")
     depends_on("astrodata +psrdada", when="+psrdada")
-    depends_on("astrodata@development", when="@development")
-    depends_on("dedispersion")
-    depends_on("dedispersion +lofar", when="+lofar")
-    depends_on("dedispersion +psrdada", when="+psrdada")
-    depends_on("dedispersion@development", when="@development")
-    depends_on("integration")
-    depends_on("integration +lofar", when="+lofar")
-    depends_on("integration +psrdada", when="+psrdada")
-    depends_on("integration@development", when="@development")
-    depends_on("snr")
-    depends_on("snr +lofar", when="+lofar")
-    depends_on("snr +psrdada", when="+psrdada")
-    depends_on("snr@development", when="@development")
-    depends_on("rfim")
-    depends_on("rfim +lofar", when="+lofar")
-    depends_on("rfim +psrdada", when="+psrdada")
-    depends_on("rfim@development", when="@development")
-    
+    depends_on("astrodata +lofar +psrdada", when="+lofar +psrdada")
 
     def setup_environment(self, spack_env, run_env):
         if "+lofar" in self.spec:
             spack_env.set("LOFAR", True)
         if "+psrdada" in self.spec:
             spack_env.set("PSRDADA", True)
-
