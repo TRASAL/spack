@@ -13,9 +13,14 @@ class PyDarc(PythonPackage):
             git=homepage,
             branch='test_trigger')
 
+    version('dev'
+            git=homepage,
+            branch='dev')
+
     depends_on('python')
     depends_on('py-setuptools')
     depends_on('py-numpy')
     depends_on('py-astropy')
     depends_on('py-pyyaml')
+    depends_on('py-voevent-parse')
 
