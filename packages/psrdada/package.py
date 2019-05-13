@@ -30,6 +30,7 @@ class Psrdada(AutotoolsPackage):
     patch('fix_pragma.patch', level=1)
     patch('no_cuda_no_mopsr.patch', level=1)
     patch('missing_cuda_include.patch', level=1)
+    patch('remove_nreader_limit.patch', level=1)
 
     def autoreconf(self, spec, prefix):
         autoreconf('--install', '--force')
