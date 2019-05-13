@@ -13,7 +13,7 @@ class PyDarc(PythonPackage):
             git=homepage,
             branch='test_trigger')
 
-    version('dev'
+    version('dev',
             git=homepage,
             branch='dev')
 
