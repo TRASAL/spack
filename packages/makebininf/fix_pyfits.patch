@@ -1,0 +1,11 @@
+--- makebininf.py   2019-06-11 13:16:12.508234705 +0000
++++ makebininf.py   2019-06-11 13:16:21.865228493 +0000
+@@ -2,7 +2,7 @@
+ from os import system
+ from os.path import splitext
+ import sys
+-import pyfits
++from astropy.io import fits as pyfits
+ import time
+ from psr_utils import rad_to_dms,rad_to_hms,coord_to_string
+ from optparse import OptionParser
