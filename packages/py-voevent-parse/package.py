@@ -1,4 +1,5 @@
 from spack import *
+import shutil
 
 
 class PyVoeventParse(PythonPackage):
@@ -13,5 +14,8 @@ class PyVoeventParse(PythonPackage):
     depends_on('py-lxml', type='run')
     depends_on('py-orderedmultidict', type='run')
 
-    # only install libs to avoid conflicts with binaries provided by other packages
-    phases = ['build', 'install_lib'] 
+    phases = ['build', 'install', 'cleanup']
+
+    # remove files in bin
+    def cleanup(self, spec, prefix):
+        shutil.rmtree(prefix.bin)

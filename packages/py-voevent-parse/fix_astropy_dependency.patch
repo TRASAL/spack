@@ -7,7 +7,7 @@ index b1c513f..7459f75 100755
  
  install_requires = [
 -    "astropy>=1.2",
-+    "astropy>=1.2,<2",
++    "astropy>=1.1,<2",
      "lxml>=2.3",
      'iso8601',
      'orderedmultidict',

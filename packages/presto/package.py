@@ -8,6 +8,7 @@ class Presto(MakefilePackage):
     url      = "https://github.com/scottransom/presto/archive/v2.1.tar.gz"
 
     version('2.1', '36b8007b0e8513371a1e886bf79f309c')
+    version('3.0', '9508df28fc0e73209d24cd444619e264')
 
     depends_on('python')
     depends_on('fftw')
@@ -41,4 +42,5 @@ class Presto(MakefilePackage):
             install(i, prefix.lib)
 
         install('lib/pulsars.cat', prefix.lib)
-        install_tree('lib/python', prefix.lib + '/python')
+        if self.version < Version('3.0'):
+            install_tree('lib/python', prefix.lib + '/python')

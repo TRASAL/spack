@@ -12,10 +12,14 @@ class Psrdada(AutotoolsPackage):
     version('2018-06-06', git='https://git.code.sf.net/p/psrdada/code',
             commit='754a618b321cf0b328d34c80c995ad0959ddf4e8')
 
+    version('2020-02-12', git='https://git.code.sf.net/p/psrdada/code',
+            commit='754a618b321cf0b328d34c80c995ad0959ddf4e8')
+
     variant('cuda', default=True, description='Enable CUDA support.')
     variant('hwloc', default=True, description='Enable hwloc support.')
     variant('gsl', default=True, description='Enable gsl support.')
     variant('fftw', default=True, description='Enable FFTW support.')
+    variant('shared', default=True, description='Enable generation of shared libs.')
 
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
@@ -31,6 +35,9 @@ class Psrdada(AutotoolsPackage):
     patch('no_cuda_no_mopsr.patch', level=1)
     patch('missing_cuda_include.patch', level=1)
     patch('remove_nreader_limit.patch', level=1)
+    patch('fix_dbevent.patch', level=1)
+    patch('fix_dbevent_utcstart.patch', level=1)
+
 
     def autoreconf(self, spec, prefix):
         autoreconf('--install', '--force')
@@ -45,4 +52,6 @@ class Psrdada(AutotoolsPackage):
             args.append('--with-cuda-dir=%s' % self.spec['cuda'].prefix)
         if 'hwloc' in self.spec:
             args.append('--with-hwloc-dir=%s' % self.spec['hwloc'].prefix)
+        if '+shared' in self.spec:
+            args.append('--enable-shared')
         return args

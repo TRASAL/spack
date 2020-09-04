@@ -1,0 +1,24 @@
+diff --git a/src/dada_dbevent.c b/src/dada_dbevent.c
+index 7b30021..b597a0e 100644
+--- a/src/dada_dbevent.c
++++ b/src/dada_dbevent.c
+@@ -773,8 +773,8 @@ int receive_events (dada_dbevent_t * dbevent, int listen_fd)
+     {
+       multilog (dbevent->log, LOG_WARNING, "Event UTC_START [%d] != Obs UTC_START [%d]\n", event_utc_start, dbevent->utc_start);
+     }
+-    else
+-    {
++    //else
++    //{
+       // sort the events based on event start time
+       qsort (events, n_events, sizeof (event_t), sort_events);
+ 
+@@ -901,7 +901,7 @@ int receive_events (dada_dbevent_t * dbevent, int listen_fd)
+       }
+ 
+       multilog (dbevent->log, LOG_INFO, "recorded=%d missed=%d\n", events_recorded, events_missed);
+-    }
++    //}
+   }
+ 
+   fclose(sockin);
