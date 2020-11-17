@@ -29,8 +29,8 @@ from spack import *
 class Rfim(CMakePackage):
     """Radio Frequency Interference (RFI) mitigation algorithms."""
 
-    homepage = "https://github.com/AA-ALERT/RFIm"
-    url      = "https://github.com/AA-ALERT/RFIm.git"
+    homepage = "https://github.com/TRASAL/RFIm"
+    url      = "https://github.com/TRASAL/RFIm.git"
 
     version("master", git=url, branch="master")
     version("development", git=url, branch="development")

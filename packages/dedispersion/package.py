@@ -29,12 +29,12 @@ from spack import *
 class Dedispersion(CMakePackage):
     """Radio astronomy dedispersion algorithm implemented for many-core accelerators."""
 
-    homepage = "https://github.com/AA-ALERT/Dedispersion"
-    url      = "https://github.com/AA-ALERT/Dedispersion/archive/4.1.tar.gz"
+    homepage = "https://github.com/TRASAL/Dedispersion"
+    url      = "https://github.com/TRASAL/Dedispersion/archive/4.1.tar.gz"
 
-    version("master", git="https://github.com/AA-ALERT/Dedispersion.git", branch="master")
-    version("development", git="https://github.com/AA-ALERT/Dedispersion.git", branch="development")
-    version("4.1", "7467486ec6682da7f62d82a1f0f8581e", url="https://github.com/AA-ALERT/Dedispersion/archive/4.1.tar.gz")
+    version("master", git="https://github.com/TRASAL/Dedispersion.git", branch="master")
+    version("development", git="https://github.com/TRASAL/Dedispersion.git", branch="development")
+    version("4.1", "7467486ec6682da7f62d82a1f0f8581e", url="https://github.com/TRASAL/Dedispersion/archive/4.1.tar.gz")
 
     variant("lofar", default=False, description="Enable LOFAR HDF5 file format support.")
     variant("psrdada", default=False, description="Enable PSRDADA ringbuffer support.")

@@ -29,12 +29,12 @@ from spack import *
 class Integration(CMakePackage):
     """Many-core integration algorithm."""
 
-    homepage = "https://github.com/AA-ALERT/Integration"
-    url      = "https://github.com/AA-ALERT/Integration/archive/2.1.tar.gz"
+    homepage = "https://github.com/TRASAL/Integration"
+    url      = "https://github.com/TRASAL/Integration/archive/2.1.tar.gz"
 
-    version("master", git="https://github.com/AA-ALERT/Integration.git", branch="master")
-    version("development", git="https://github.com/AA-ALERT/Integration.git", branch="development")
-    version("2.1", "7f7f471a7148bf214b0f7e8517d27a7d", url="https://github.com/AA-ALERT/Integration/archive/2.1.tar.gz")
+    version("master", git="https://github.com/TRASAL/Integration.git", branch="master")
+    version("development", git="https://github.com/TRASAL/Integration.git", branch="development")
+    version("2.1", "7f7f471a7148bf214b0f7e8517d27a7d", url="https://github.com/TRASAL/Integration/archive/2.1.tar.gz")
 
     variant("lofar", default=False, description="Enable LOFAR HDF5 file format support.")
     variant("psrdada", default=False, description="Enable PSRDADA ringbuffer support.")

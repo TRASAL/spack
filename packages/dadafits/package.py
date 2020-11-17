@@ -3,10 +3,10 @@ import os
 
 
 class Dadafits(CMakePackage):
-    homepage = "https://github.com/AA-ALERT/dadafits"
+    homepage = "https://github.com/TRASAL/dadafits"
 
     version('master',
-            git='https://github.com/AA-ALERT/dadafits',
+            git='https://github.com/TRASAL/dadafits',
             branch='master')
 
     depends_on('cuda')

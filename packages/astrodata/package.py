@@ -29,12 +29,12 @@ from spack import *
 class Astrodata(CMakePackage):
     """Set of C++ classes to operate on radio astronomical data."""
 
-    homepage = "https://github.com/AA-ALERT/AstroData"
-    url      = "https://github.com/AA-ALERT/AstroData/archive/3.1.1.tar.gz"
+    homepage = "https://github.com/TRASAL/AstroData"
+    url      = "https://github.com/TRASAL/AstroData/archive/3.1.1.tar.gz"
 
-    version("master", git="https://github.com/AA-ALERT/AstroData.git", branch="master")
-    version("development", git="https://github.com/AA-ALERT/AstroData.git", branch="development")
-    version("3.1.1", "313b8d70578fd0b19d5a974150390577", url="https://github.com/AA-ALERT/AstroData/archive/3.1.1.tar.gz")
+    version("master", git="https://github.com/TRASAL/AstroData.git", branch="master")
+    version("development", git="https://github.com/TRASAL/AstroData.git", branch="development")
+    version("3.1.1", "313b8d70578fd0b19d5a974150390577", url="https://github.com/TRASAL/AstroData/archive/3.1.1.tar.gz")
 
     variant("lofar", default=False, description="Enable LOFAR HDF5 file format support.")
     variant("psrdada", default=False, description="Enable PSRDADA ringbuffer support.")

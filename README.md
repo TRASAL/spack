@@ -13,7 +13,7 @@ your filesystem:
 ```
 $ mkdir ~/Work && cd ~/Work
 $ git clone https://github.com/spack/spack.git
-$ git clone https://github.com/AA-ALERT/spack spack-apertif
+$ git clone https://github.com/TRASAL/spack spack-apertif
 ```
 
 Now add the spack-apertif repoistory to your spack configuration:

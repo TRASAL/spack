@@ -29,12 +29,12 @@ from spack import *
 class Amber(CMakePackage):
     """A many-core transient searching pipeline, designed mainly to search in real-time for Fast Radio Bursts."""
 
-    homepage = "https://github.com/AA-ALERT/AMBER"
-    url      = "https://github.com/AA-ALERT/AMBER/archive/2.1.tar.gz"
+    homepage = "https://github.com/TRASAL/AMBER"
+    url      = "https://github.com/TRASAL/AMBER/archive/2.1.tar.gz"
 
-    version("master", git="https://github.com/AA-ALERT/AMBER.git", branch="master")
-    version("development", git="https://github.com/AA-ALERT/AMBER.git", branch="development")
-    version("2.1", "f67d3d27dd1b946df56f22f7f3fa200b", url="https://github.com/AA-ALERT/AMBER/archive/2.1.tar.gz")
+    version("master", git="https://github.com/TRASAL/AMBER.git", branch="master")
+    version("development", git="https://github.com/TRASAL/AMBER.git", branch="development")
+    version("2.1", "f67d3d27dd1b946df56f22f7f3fa200b", url="https://github.com/TRASAL/AMBER/archive/2.1.tar.gz")
 
     variant("lofar", default=False, description="Enable LOFAR HDF5 file format support.")
     variant("psrdada", default=False, description="Enable PSRDADA ringbuffer support.")

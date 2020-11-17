@@ -29,12 +29,12 @@ from spack import *
 class Snr(CMakePackage):
     """Computing signal-to-noise ratio of dedispersed and folded time series."""
 
-    homepage = "https://github.com/AA-ALERT/SNR"
-    url      = "https://github.com/AA-ALERT/SNR/archive/3.1.tar.gz"
+    homepage = "https://github.com/TRASAL/SNR"
+    url      = "https://github.com/TRASAL/SNR/archive/3.1.tar.gz"
 
-    version("master", git="https://github.com/AA-ALERT/SNR.git", branch="master")
-    version("development", git="https://github.com/AA-ALERT/SNR.git", branch="development")
-    version("3.1", "eb1350fda218a25a6f78d2783d15546c", url="https://github.com/AA-ALERT/SNR/archive/3.1.tar.gz")
+    version("master", git="https://github.com/TRASAL/SNR.git", branch="master")
+    version("development", git="https://github.com/TRASAL/SNR.git", branch="development")
+    version("3.1", "eb1350fda218a25a6f78d2783d15546c", url="https://github.com/TRASAL/SNR/archive/3.1.tar.gz")
 
     variant("lofar", default=False, description="Enable LOFAR HDF5 file format support.")
     variant("psrdada", default=False, description="Enable PSRDADA ringbuffer support.")
