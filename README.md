@@ -31,13 +31,13 @@ $ . spack/share/spack/setup-env.sh
 Now you need to bootstrap your new environment:
 
 ```
-$ spack bootstrap
+$ spack bootstrap now
 ```
 
-For now we base everything on GCC 6.4.0:
+For now we base everything on the latest GCC 14 (CUDA does not yet support GCC 15 as of version 12.9)
 ```
-$ spack install gcc@6.4.0
-$ spack module load gcc@6.4.0
+$ spack install gcc@14.2.0
+$ spack load gcc@14.2.0
 $ spack compiler find
 ```
 
@@ -45,7 +45,7 @@ $ spack compiler find
 After which you can start spacking astronomy packages:
 
 ```
-$ spack install tempo %gcc@6.4.0
+$ spack install tempo %gcc@14.2.0
 ```
 
 Notes:
