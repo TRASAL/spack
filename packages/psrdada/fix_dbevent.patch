@@ -1,0 +1,11 @@
+--- a/src/dada_dbevent.c	2019-06-13 12:14:42.000000000 +0200
++++ b/src/dada_dbevent.c	2019-06-13 12:14:59.000000000 +0200
+@@ -732,7 +732,7 @@
+     event_end_fractional = strtok_r (NULL, sep_time, &saveptr);
+ 
+     if (dbevent->verbose)
+-      multilog (log, LOG_INFO, "event_end=%s event_end_fractional=%s\n", event_start, event_start_fractional);
++      multilog (log, LOG_INFO, "event_end=%s event_end_fractional=%s\n", event_end, event_end_fractional);
+     offset = calculate_byte_offset (dbevent, event_end, event_end_fractional);
+     if (offset >= 0)
+     {

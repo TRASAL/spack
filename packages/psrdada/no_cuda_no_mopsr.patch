@@ -1,0 +1,14 @@
+--- a/mopsr/Makefile.am	2018-06-13 16:21:51.000000000 +0200
++++ b/mopsr/Makefile.am	2018-06-13 16:37:25.097848118 +0200
+@@ -2,9 +2,10 @@
+ SUBDIRS = scripts config
+ 
+ # source code for mopsr heavily dependent on PGPLOT and FFTW3
++if HAVE_CUDA
+ if HAVE_PGPLOT
+ if HAVE_FFTW3
+   SUBDIRS += src
+ endif
+ endif
+-
++endif
