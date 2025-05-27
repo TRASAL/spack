@@ -31,8 +31,10 @@ Next you can activate the spack environment:
 $ . spack/share/spack/setup-env.sh
 ```
 
+
 For now we base everything on the system GCC 12.
 ```
+$ spack bootstrap now
 $ spack compiler find
 ```
 
