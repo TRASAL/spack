@@ -1,0 +1,289 @@
+diff --git src/tempo.f src/tempo.f
+index d50028e..c61febd 100644
+--- src/tempo.f
++++ src/tempo.f
+@@ -145,15 +145,15 @@ C  99	gro.99			newval
+         include 'toa.h'
+ 
+ 	logical lw, nostop
+-        logical memerr
+-	character*640 infile
+-        character*80 ut1file,resfile1,
++      logical memerr
++	character*4096 infile
++        character*4096 ut1file,resfile1,
+      +       resfile2,listfile,fname,line,tdbfile,s,hlpfile
+-        character*640 obsyfile
+-        character*80 path
+-        character*160 cfgpath
+-	character*160 npulsefile, infofile, phisunfile, dmxnfile
+-        character*160 dopplerfile
++        character*4096 obsyfile
++        character*4096 path
++        character*4096 cfgpath
++	character*4096 npulsefile, infofile, phisunfile, dmxnfile
++        character*4096 dopplerfile
+ 	character date*9,date2*9,damoyr*9,label*12,parfile*160
+ 	integer time
+         real*8 xmean(NPA),alng(NOBSMAX)
+diff --git src/tparin.f src/tparin.f
+index bded455..4b0116b 100644
+--- src/tparin.f
++++ src/tparin.f
+@@ -21,12 +21,12 @@ c     following variables are set in this routine:
+       integer lpth
+       integer nparmax, nptsmax
+       real*8 version
+-      character*160 npulsefile
+-      character*640 infile
+-      character*80 path
+-      character*80 resfile1
+-      character*80 hlpfile
+-      character*160 parfile
++      character*4096 npulsefile
++      character*4096 infile
++      character*4096 path
++      character*4096 resfile1
++      character*4096 hlpfile
++      character*4096 parfile
+       character*160 key
+       character*160 val
+       integer err
+diff --git src/acom.h src/acom.h
+index 0ecf69d..fff46cc 100644
+--- src/acom.h
++++ src/acom.h
+@@ -81,7 +81,7 @@ c      $Id$
+      +                  xmxuse(NXMXMAX),
+      +                  xmxfrq0, usexmxfrq0, nxmx
+ 
+-	character psrname*64,obsflag*1,pardir*80,infotxt*160
++	character psrname*64,obsflag*1,pardir*4096,infotxt*160
+         character obskey*5
+         character jumpflag*32, jumpflagval*32
+         character infoflag*32
+@@ -89,7 +89,7 @@ c      $Id$
+         character equadflag*32, equadflagval*32
+         character ecorrflag*32, ecorrflagval*32
+         character eclcon*80
+-        character dcovfile*80
++        character dcovfile*4096
+ 
+         common/acomch/psrname,pardir,obsflag,infotxt,obskey(NOBSMAX),
+      +    eclcon,dcovfile,
+diff --git src/arrtim.f src/arrtim.f
+index feb2c46..57cefcd 100644
+--- src/arrtim.f
++++ src/arrtim.f
+@@ -23,14 +23,14 @@ C  DJN 18-Aug-92  Allow up to 36 sites
+         integer wflag
+         integer nread
+ 	character*640 card,card2
+-        character*160 infile,aitem
++        character*4096 infile,aitem
+ 	character asite*1,bsite*2,comment*8,aterr*9,afmjd*15
+         character*20 amjd
+ 	logical first,offset,jdcatc,last,dithmsg,track,search
+ 	logical memerr
+ 	logical parsed
+ 	integer i1, i2
+-        character*160 infofile
++        character*4096 infofile
+         character*80 tmp
+         character*640 rawflags
+ 	include 'acom.h'
+diff --git src/bootmc.f src/bootmc.f
+index a5872cf..2273a3e 100644
+--- src/bootmc.f
++++ src/bootmc.f
+@@ -15,7 +15,7 @@ C  See Numerical Recipes, Second Edition, pp 686 ff.
+ 	real*8 fl1(NPAP1),fl2(NPAP1),fh1(NPAP1),fh2(NPAP1)
+ 	integer mfit(NPAP1)
+ 	real*4 ran1
+-        character*80 resfile2
++        character*4096 resfile2
+ 	logical lw,first
+ 	data lw/.false./,first/.true./,idum/-999/
+ 
+diff --git src/cfgin.f src/cfgin.f
+index 7a3e0b2..fcff05a 100644
+--- src/cfgin.f
++++ src/cfgin.f
+@@ -19,7 +19,7 @@ c     output parameters
+       character*(*) ut1file, obsyfile, tdbfile
+ 
+ c     local variables
+-      character*640 line, label, fname, s
++      character*4096 line, label, fname, s
+       character*640 key, val
+       integer vall, err
+       integer i, j, k
+diff --git src/clocks.h src/clocks.h
+index e133711..cbfc239 100644
+--- src/clocks.h
++++ src/clocks.h
+@@ -1,5 +1,5 @@
+ c      $Id$
+-        character clkfile(NCLKMAX)*80, clklbl(0:NCLKMAX)*32,clkdir*80
++        character clkfile(NCLKMAX)*4096, clklbl(0:NCLKMAX)*32,clkdir*4096
+ 	integer ckflag(NPT)
+ 
+ 	common/clocks/ tdate(NPT),ckcorr(NPT),jsite(NPT),ndate,nclk,
+diff --git src/eph.h src/eph.h
+index 71b242f..ab65998 100644
+--- src/eph.h
++++ src/eph.h
+@@ -1,5 +1,5 @@
+ c      $Id$
+-	character*80 ephdir,ephfile(NEPHMAX),ephname(NEPHMAX)
++	character*4096 ephdir,ephfile(NEPHMAX),ephname(NEPHMAX)
+         integer ephnamel(NEPHMAX)
+         logical ephbigendian(NEPHMAX)
+         integer kephem, nephem
+diff --git src/ephinit.f src/ephinit.f
+index 4fc4d4c..5c3564b 100644
+--- src/ephinit.f
++++ src/ephinit.f
+@@ -17,7 +17,7 @@ c     DJN 29 July 1997
+ 
+ c     inputs:
+       integer iunitin           ! fortran unit number for the file
+-      character*256 ephfile     ! ephemeris file name
++      character*4096 ephfile     ! ephemeris file name
+       logical ephbigendian
+       logical bigendian
+       integer nrecl
+diff --git src/fit.f src/fit.f
+index e066372..6592cc0 100644
+--- src/fit.f
++++ src/fit.f
+@@ -30,7 +30,7 @@ c       moved declaration of real*8 array(NPA,NPA) to acom.h, djn, 8 Sep 98
+         real*8 buf(*)
+         integer npmsav(*), ksav(*)
+ 	character mark*1,adn*14,date*9,damoyr*9
+-	character*80 resfile2
++	character*4096 resfile2
+ 
+         integer isetflag
+ 
+diff --git src/glsfit.f src/glsfit.f
+index 05fe1db..0541b8c 100644
+--- src/glsfit.f
++++ src/glsfit.f
+@@ -30,7 +30,7 @@ c       moved declaration of real*8 array(NPA,NPA) to acom.h, djn, 8 Sep 98
+         real*8 buf(*)
+         integer npmsav(*), ksav(*)
+ 	character mark*1,adn*14,date*9,damoyr*9
+-        character*80 resfile2
++        character*4096 resfile2
+ 
+         integer isetflag
+ 
+diff --git src/setup.f src/setup.f
+index e41aae5..cf99302 100644
+--- src/setup.f
++++ src/setup.f
+@@ -8,8 +8,8 @@ c       $Id$
+         include 'version.h'
+ 	real*8 alng(NOBSMAX)
+ 	integer time
+-	character timstr*24,obsnam*12,damoyr*9,parfile*160
+-	character*640 infile
++	character timstr*24,obsnam*12,damoyr*9,parfile*4096
++	character*4096 infile
+         character*(*) obsyfile
+         character*640 tpocmd
+         character*5 obskey0
+diff --git src/tdbinit.f src/tdbinit.f
+index 054028b..27f4323 100644
+--- src/tdbinit.f
++++ src/tdbinit.f
+@@ -16,7 +16,7 @@ c     DJN 19 August 1997
+ 
+ c     inputs:
+       integer tdbunitin         ! fortran unit number for the file
+-      character*256 tdbfile     ! ephemeris file name
++      character*4096 tdbfile     ! ephemeris file name
+ 
+       integer nfl
+ 
+diff --git src/tdbinit2.f src/tdbinit2.f
+index 600388b..7f9d53b 100644
+--- src/tdbinit2.f
++++ src/tdbinit2.f
+@@ -22,7 +22,7 @@ c     DJN 30 July 2004; based on tdbinit
+ 
+ c     inputs:
+       integer tdbunitin         ! fortran unit number for the file
+-      character*256 tdbfile     ! ephemeris file name
++      character*4096 tdbfile     ! ephemeris file name
+ 
+       integer nfl
+ 
+diff --git src/tpohdr.f src/tpohdr.f
+index c56c305..74d46be 100644
+--- src/tpohdr.f
++++ src/tpohdr.f
+@@ -4,7 +4,7 @@ c      $Id$
+ 
+ 
+ 	implicit real*8 (a-h,o-z)
+-	character pardir*(*),parfile*(*),path*160
++	character pardir*(*),parfile*(*),path*4096
+ 	character*12 zname
+ 	logical oldpar
+ 
+diff --git src/tz.h src/tz.h
+index 70ebea1..3d41829 100644
+--- src/tz.h
++++ src/tz.h
+@@ -1,8 +1,8 @@
+ c      $Id$
+-       character tzdir*80,tzfile*80,tztfile*80,tzsite*80
++       character tzdir*4096,tzfile*4096,tztfile*4096,tzsite*4096
+        character tzrsite*80,tzrsitedefault*80
+        character tzsitedef*1
+-       character polycofile*160
++       character polycofile*4096
+        character name(NTZMAX)*12,pname*12,params(6)*80
+        integer ntzsite,ntzrsite
+        integer nsp(NTZMAX),nco(NTZMAX)
+diff --git src/tzinit.f src/tzinit.f
+index d9e8d88..7f4b382 100644
+--- src/tzinit.f
++++ src/tzinit.f
+@@ -7,7 +7,7 @@ c      $Id$
+         include 'acom.h'
+ 
+         real*8 alng(NOBSMAX)
+-	character path*96
++	character path*4096
+ 	character line*80,item*40
+ 	character*5 obskey0
+ 	real*8 maxhadef
+diff --git util/avtime/avtime.f util/avtime/avtime.f
+index 91ca071..54b1bdd 100644
+--- util/avtime/avtime.f
++++ util/avtime/avtime.f
+@@ -29,7 +29,7 @@ c     confused by "PHAS" statements--can't handle zero-weight points
+       real*8 err
+       real*8 ct,dtp,phase,period,fdop
+       character*9 date(NPTSMAX)
+-      character*80 infile,outfile
++      character*4096 infile,outfile
+       character*80 card
+       character*80 fmtstring
+       integer i, ii, j, idx, nargs, nmid
+diff --git util/lk/lk.f util/lk/lk.f
+index 63d4b58..3a59908 100644
+--- util/lk/lk.f
++++ util/lk/lk.f
+@@ -5,7 +5,7 @@
+ 	real*8 rct(maxpts),rphase(maxpts),resid1(maxpts),resid2(maxpts),
+      +    xindex(maxpts),dayofyr(maxpts)
+ 	character*1 an
+-	character*32 infile
++	character*4096 infile
+ 	data infile/'resid2.tmp'/
+ 
+ 	if(iargc().eq.1) call getarg(1,infile)
