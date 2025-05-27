@@ -12,14 +12,17 @@ your filesystem:
 
 ```
 $ mkdir ~/Work && cd ~/Work
-$ git clone https://github.com/spack/spack.git
+$ git clone -c feature.manyFiles=true --depth=2 https://github.com/spack/spack.git -b v0.23.1
 $ git clone https://github.com/TRASAL/spack spack-apertif
 ```
 
-Now add the spack-apertif repoistory to your spack configuration:
-
+Now add the spack-apertif repository to your spack configuration. Ensure it is listed _above_ the default repository.
+Edit spack/etc/spack/defaults/repos.yaml to look something like this:
 ```
-$ echo "  - `pwd`/spack-apertif" >> spack/etc/spack/defaults/repos.yaml
+repos:
+  - /home/<your username here>/Work/spack-apertif
+  - $spack/var/spack/repos/builtin
+
 ```
 
 Next you can activate the spack environment:
@@ -28,16 +31,8 @@ Next you can activate the spack environment:
 $ . spack/share/spack/setup-env.sh
 ```
 
-Now you need to bootstrap your new environment:
-
+For now we base everything on the system GCC 12.
 ```
-$ spack bootstrap now
-```
-
-For now we base everything on the latest GCC 14 (CUDA does not yet support GCC 15 as of version 12.9)
-```
-$ spack install gcc@14.2.0
-$ spack load gcc@14.2.0
 $ spack compiler find
 ```
 
@@ -45,7 +40,7 @@ $ spack compiler find
 After which you can start spacking astronomy packages:
 
 ```
-$ spack install tempo %gcc@14.2.0
+$ spack install tempo2+x11
 ```
 
 Notes:
