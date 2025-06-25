@@ -50,6 +50,4 @@ class Tempo2(AutotoolsPackage):
     def install(self, spec, prefix):
         make('install')
         make('plugins-install')
-        for subdir in os.listdir('T2runtime'):
-            if os.path.isdir(subdir):
-                copytree('T2runtime/'+subdir, self.prefix+'/'+subdir)
+        install_tree('T2runtime', prefix)
