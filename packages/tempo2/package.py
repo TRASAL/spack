@@ -20,11 +20,12 @@ class Tempo2(AutotoolsPackage):
     depends_on('m4',       type='build')
 
     depends_on('cfitsio')
-    depends_on('pgplot')
     depends_on('fftw@3.3:')
 
     depends_on('libx11', when="+x11")
     depends_on('gsl', when="+gsl")
+    depends_on('pgplot', when="~x11")
+    depends_on('pgplot+X', when="+x11")
 
     def configure_args(self):
         args = ['--with-fftw3-dir=' + self.spec['fftw'].prefix,
