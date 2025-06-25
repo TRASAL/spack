@@ -11,7 +11,8 @@ class Psrchive(AutotoolsPackage):
     variant("python", default=False, description="Enable Python interface")
 
     depends_on('tempo2')
-    depends_on('pgplot')
+    depends_on('pgplot', when='~x11')
+    depends_on('pgplot+X', when='+x11')
     depends_on('fftw')
 
     depends_on('libx11', when="+x11")
@@ -25,5 +26,5 @@ class Psrchive(AutotoolsPackage):
             args.append("--with-x") 
         return args
 
-    def setup_environment(self, spack_env, run_env):
-        run_env.set('PGPLOT_FONT', self.spec['pgplot'].prefix+'/grfont.dat')
+    def setup_run_environment(self, env):
+        env.set('PGPLOT_FONT', self.spec['pgplot'].prefix+'/include/grfont.dat')
