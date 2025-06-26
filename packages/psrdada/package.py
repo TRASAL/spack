@@ -24,6 +24,7 @@ class Psrdada(AutotoolsPackage):
     depends_on('m4',       type='build')
 
     depends_on('cuda', when='+cuda')
+    depends_on('python', when='+cuda')
     depends_on('hwloc', when='+hwloc')
     depends_on('gsl', when='+gsl')
     depends_on('fftw@3.3', when='+fftw')
