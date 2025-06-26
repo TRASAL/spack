@@ -9,6 +9,8 @@ class Presto(MesonPackage):
 
     version('5.0.3', '3e9ce6df9098a8b1086b0892538d0554')
 
+    variant("python", default=True, description="Build python bindings.")
+
     depends_on('cmake', type='build')
     depends_on('pkgconfig', type='build')
     depends_on('cfitsio')
@@ -16,9 +18,10 @@ class Presto(MesonPackage):
     depends_on('fftw')
     depends_on('libpng')
     depends_on('pgplot+X')
-    depends_on('python')
-    depends_on('py-pip')
     depends_on('tempo')
+
+    depends_on('python', when="+python")
+    depends_on('py-pip', when="+python")
 
     patch('add_wsrt.patch', level=1)
 
@@ -32,15 +35,15 @@ class Presto(MesonPackage):
         env.set('PRESTO', self.prefix)
         env.append_path('PYTHONPATH', f'{self.prefix}/python')
 
-    def install(self, spec, prefix):
-        super().install(spec, prefix)
-
+    @run_after('install')
+    def post_install(self):
         # FFTW wisdom file is optimized for ARTS
         package_path = os.path.dirname(os.path.abspath(__file__))
         install(f'{package_path}/fftw_wisdom.txt', f'{prefix}/lib')
         install_tree('examplescripts', f'{prefix}/examplescripts')
         install_tree('lib', f'{prefix}/lib')
 
-        os.chdir('python')
-        pip = which('pip')
-        pip('install', '.', f'--target={prefix}/python')
+        if "+python" in self.spec:
+            os.chdir('python')
+            pip = which('pip')
+            pip('install', '.', f'--target={prefix}/python')
