@@ -22,6 +22,6 @@ class Psrcat(Package):
     def install(self, spec, prefix):
         filter_file('MAX_CATLEN 100', 'MAX_CATLEN 255', 'psrcat.h')
         make("-B", "psrcat")
-        os.mkdir(prefix+'/bin')
+        os.mkdir(prefix.bin, 0o755)
         install('psrcat.db', prefix)
         install('psrcat', prefix.bin)
