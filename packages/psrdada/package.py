@@ -29,14 +29,6 @@ class Psrdada(AutotoolsPackage):
     depends_on('gsl', when='+gsl')
     depends_on('fftw@3.3', when='+fftw')
 
-#    patch('fix_pragma.patch', level=1)
-#    patch('no_cuda_no_mopsr.patch', level=1)
-#    patch('missing_cuda_include.patch', level=1)
-#    patch('remove_nreader_limit.patch', level=1)
-#    patch('fix_dbevent.patch', level=1)
-#    patch('fix_dbevent_utcstart.patch', level=1)
-
-
     def autoreconf(self, spec, prefix):
         autoreconf('--install', '--force')
 
