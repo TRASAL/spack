@@ -42,6 +42,9 @@ class Tempo(AutotoolsPackage):
     version('2018-04-24', git=url, commit='13e12c')
     version('2025-05-07', git=url, commit='aaf34c')
 
+    depends_on("c", type="build")
+    depends_on("fortran", type="build")
+
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
     depends_on('libtool',  type='build')
@@ -59,7 +62,7 @@ class Tempo(AutotoolsPackage):
         env.set('TEMPO', self.prefix + '/tempo')
 
     def install(self, spec, prefix):
-        os.mkdir('tempo', 755)
+        os.mkdir('tempo', 0o0755)
         install_tree('clock', prefix + '/tempo/clock')
         install_tree('ephem', prefix + '/tempo/ephem')
         install('obsys.dat', prefix + '/tempo')
