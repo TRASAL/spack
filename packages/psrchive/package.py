@@ -7,8 +7,8 @@ class Psrchive(AutotoolsPackage):
 
     version('2025-04-24', sha256='20e3ba5dc8979af33498fc0d84a55acf2ac68c8fd854d91cf6e8bab73d65a9e3')
 
-    variant("x11", default=False, description="Enable GUI")
-    variant("python", default=False, description="Enable Python interface")
+    variant("x11", default=True, description="Enable GUI")
+    variant("python", default=True, description="Enable Python interface")
 
     depends_on('tempo2')
     depends_on('pgplot', when='~x11')
