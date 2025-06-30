@@ -15,6 +15,7 @@ class Psrchive(AutotoolsPackage):
     depends_on('pgplot+X', when='+x11')
     depends_on('fftw')
     depends_on('gsl')
+    depends_on('pkg-config', type="build")
 
     depends_on('libx11', when="+x11")
     depends_on('qt', when="+x11")
@@ -34,7 +35,7 @@ class Psrchive(AutotoolsPackage):
 
     def setup_build_environment(self, env):
         # path to python after following symlinks, such that psrchive can find libpython
-        python_path = os.path.abspath(os.path.realpath(which('python').path))
+        python_path = os.path.abspath(os.path.realpath(f'{self.spec["python"].prefix}/bin'))
         env.set('PYTHON', python_path)
 
     def setup_run_environment(self, env):
