@@ -12,9 +12,9 @@ class Psrcat(Package):
     """
 
     homepage = "http://www.atnf.csiro.au/people/pulsar/psrcat/"
-    url = "https://www.atnf.csiro.au/research/pulsar/psrcat/downloads/psrcat_pkg.v2.6.1.tar.gz"
+    url = "https://www.atnf.csiro.au/research/pulsar/psrcat/downloads/psrcat_pkg.v2.6.3.tar.gz"
 
-    version('2.6.1', '6378c1fdb9fac2ba3138cb5b3309de25')
+    version('2.6.3', '39ab7359cf152d6d17fa0f33a8884089')
 
     def setup_run_environment(self, env):
         env.set('PSRCAT_FILE', self.prefix+"/psrcat.db")
