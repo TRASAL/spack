@@ -35,7 +35,7 @@ class Psrchive(AutotoolsPackage):
 
     def setup_build_environment(self, env):
         # path to python after following symlinks, such that psrchive can find libpython
-        python_path = os.path.abspath(os.path.realpath(f'{self.spec["python"].prefix}/bin'))
+        python_path = os.path.abspath(os.path.realpath(f'{self.spec["python"].prefix}/bin/python'))
         env.set('PYTHON', python_path)
 
     def setup_run_environment(self, env):
