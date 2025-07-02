@@ -12,11 +12,6 @@ fi
 
 for i in $(seq -w 01 40); do
     node=arts0$i
-    if [[ "${node}" == "arts033" ]]; then
-        echo "Skipping ${node}"
-        continue
-    fi
-
 
     echo "Syncing spack software to ${node}"
     if ! $(ssh ${node} test -d ${spack_dir}); then
