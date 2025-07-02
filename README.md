@@ -3,10 +3,10 @@
 This is a spack repository containing radio astronomy software, mostly for ASTRON's ARTS cluster.
 
 # Setup
-Clone spack itself and this repository (n.b. this repo is probably _not_ compatible with spack 1.0, so use the latest 0.x version), e.g. for spack in `/usr/local` and this repo in your home directory:
+Clone spack itself and this repository (n.b. this repo is probably _not_ compatible with spack 1.0, so use the latest 0.x version), e.g.:
 ```
 git clone -c feature.manyFiles=true --depth=2 https://github.com/spack/spack.git -b v0.23.1 /usr/local/spack
-git clone https://github.com/TRASAL/spack spack-repo ~/spack-repo
+git clone https://github.com/TRASAL/spack /usr/local/spack/artsrepo
 ```
 
 Enable spack in your current shell and bootstrap spack itself:
@@ -32,7 +32,7 @@ Perform the final initialization steps _inside the environment_. These steps are
 ```
 spack compiler find
 spack external find --all -p /usr/local/cuda
-spack repo add ~/spack-repo
+spack repo add /usr/local/spack/artsrepo
 ```
 N.b. is it possible to install other compilers using spack itself, but this takes a long time and the compilers on the ARTS system are new enough so these are used instead.
 
