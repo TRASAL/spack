@@ -25,9 +25,11 @@ spack env activate -p arts
 The `-p` flag is optional and prepends the environment name to your shell prompt. A shorthand for `spack env activate` is `spacktivate`. Deactivation can be done with `spack env deactivate` or `despacktivate`.
 
 Perform the final initialization steps _inside the environment_. These steps are
-*. Find already installed compilers on the system
-*. Find already installed packages on the system (e.g. CUDA)
-*. Ensure spack can find the packages defined in this repo
+
+1. Find already installed compilers on the system
+1. Find already installed packages on the system (e.g. CUDA)
+1. Ensure spack can find the packages defined in this repo
+
 ```
 spack compiler find
 spack external find --all -p /usr/local/cuda
@@ -70,3 +72,5 @@ Run `module avail` to get a list of available modules. In principle, a single ve
 ### Python packages
 Note that several packages come with Python modules as well. When one of these packages is loaded, the Python module is loaded as well, but _not_ the other way around. I.e. when you want to use e.g. the PRESTO Python modules, run either `module load python` followed by `module load presto`, or simply `module load presto`.
 
+### ARTS cluster installation
+On the ARTS cluster the spack installation is made available locally on each node in `/usr/local/spack`. The installation is synced from arts041 to the other nodes. The installation path must be the same on all nodes to avoid breaking symlinks, wich are used internally by spack.
