@@ -12,6 +12,7 @@ class Dspsr(AutotoolsPackage):
     depends_on('cuda')
     depends_on('swig')
     depends_on('gsl')
+    depends_on('pkg-config', type="build")
 
     def autoreconf(self, spec, prefix):
         with open("backends.list", 'w') as f:
