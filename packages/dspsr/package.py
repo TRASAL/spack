@@ -1,24 +1,19 @@
 from spack import *
 import os
-from subprocess import check_call
 
 class Dspsr(AutotoolsPackage):
     homepage = "http://dspsr.sourceforge.net/"
-    url = "https://git.code.sf.net/p/dspsr/code"
+    url = "https://downloads.sourceforge.net/project/dspsr/dspsr/2025-02-03/dspsr-2025-02-03.tar.gz"
 
-    version('2018-05-22',
-            git=url,
-            commit='85982f596796dc2c3a9b4da7bbbaa9b28246c7fb')
+    version('2025-02-03', sha256='e4c54ce91092b42c3cc54cf6046abaa5c7e5595b67ccf469e5111da5cde62c9b')
 
     depends_on('psrdada')
     depends_on('psrchive')
     depends_on('cuda')
     depends_on('swig')
     depends_on('gsl')
+    depends_on('pkg-config', type="build")
 
     def autoreconf(self, spec, prefix):
         with open("backends.list", 'w') as f:
             f.write("dada fits sigproc\n")
-
-        # don't know how to call a script the spack way
-        check_call("./bootstrap")

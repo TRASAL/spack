@@ -8,8 +8,10 @@ class PyKapteyn(PythonPackage):
     """
 
     homepage = "https://www.astro.rug.nl/software/kapteyn/"
-    url      = "https://www.astro.rug.nl/software/kapteyn/kapteyn-2.3.tar.gz"
+    url      = "https://www.astro.rug.nl/software/kapteyn/kapteyn-3.4.tar.gz"
 
-    version('2.3', '43b26064b0af78b1cc906c5fa90fcc63')
+    version('3.4', 'ad7c1daf5761adc431edf806423d1417')
 
     depends_on('py-numpy')
+    depends_on('py-setuptools')
+    depends_on('py-cython', type='build')

@@ -12,18 +12,16 @@ class Psrcat(Package):
     """
 
     homepage = "http://www.atnf.csiro.au/people/pulsar/psrcat/"
-    url = "http://www.atnf.csiro.au/people/pulsar/psrcat/downloads/psrcat_pkg.tar.gz"
+    url = "https://www.atnf.csiro.au/research/pulsar/psrcat/downloads/psrcat_pkg.v2.6.3.tar.gz"
 
-    version('1.58', 'e1b95491e91d708630d15144eae88357')
+    version('2.6.3', '39ab7359cf152d6d17fa0f33a8884089')
 
-    def setup_environment(self, spack_env, run_env):
-        run_env.prepend_path('PSRCAT_FILE', self.prefix+"/psrcat.db")
+    def setup_run_environment(self, env):
+        env.set('PSRCAT_FILE', self.prefix+"/psrcat.db")
 
     def install(self, spec, prefix):
         filter_file('MAX_CATLEN 100', 'MAX_CATLEN 255', 'psrcat.h')
-        src = os.getcwd()
-        makeit = which(src + "/makeit")
-        makeit()
-        os.mkdir(prefix+'/bin', 0755)
+        make("-B", "psrcat")
+        os.mkdir(prefix.bin, 0o755)
         install('psrcat.db', prefix)
         install('psrcat', prefix.bin)

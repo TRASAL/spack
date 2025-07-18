@@ -12,9 +12,8 @@ class PsrfitsUtils(AutotoolsPackage):
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
 
-    version('2017-01-20',
-            git=url,
-            commit='1fbf51b')
+    version('2017-01-20', git=url, commit='1fbf51b')
+    version('2021-03-24', git=url, commit='c2a60b0')
 
     depends_on('cfitsio')
 

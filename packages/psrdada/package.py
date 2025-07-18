@@ -8,12 +8,9 @@ class Psrdada(AutotoolsPackage):
     instrumentation for pulsar astronomy."""
 
     homepage = "http://psrdada.sourceforge.net"
+    url = 'https://git.code.sf.net/p/psrdada/code'
 
-    version('2018-06-06', git='https://git.code.sf.net/p/psrdada/code',
-            commit='754a618b321cf0b328d34c80c995ad0959ddf4e8')
-
-    version('2020-02-12', git='https://git.code.sf.net/p/psrdada/code',
-            commit='754a618b321cf0b328d34c80c995ad0959ddf4e8')
+    version('2024-12-13', git=url, commit='1e48b65e90b279683134f91395668b38e58f7646')
 
     variant('cuda', default=True, description='Enable CUDA support.')
     variant('hwloc', default=True, description='Enable hwloc support.')
@@ -27,17 +24,10 @@ class Psrdada(AutotoolsPackage):
     depends_on('m4',       type='build')
 
     depends_on('cuda', when='+cuda')
+    depends_on('python', when='+cuda')
     depends_on('hwloc', when='+hwloc')
     depends_on('gsl', when='+gsl')
-    depends_on('fftw@3.3', when='+mpi')
-
-    patch('fix_pragma.patch', level=1)
-    patch('no_cuda_no_mopsr.patch', level=1)
-    patch('missing_cuda_include.patch', level=1)
-    patch('remove_nreader_limit.patch', level=1)
-    patch('fix_dbevent.patch', level=1)
-    patch('fix_dbevent_utcstart.patch', level=1)
-
+    depends_on('fftw@3.3', when='+fftw')
 
     def autoreconf(self, spec, prefix):
         autoreconf('--install', '--force')

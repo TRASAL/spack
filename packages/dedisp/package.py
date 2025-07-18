@@ -30,6 +30,7 @@ class Dedisp(MakefilePackage):
     url = homepage
 
     version('2018-04-26', git=url, commit='8a3d017cdb97e3d4ea2a423604602e04cde03b0e')
+    version('2023-01-18', git=url, commit='0f763a3bd1c726d9363c63cae855c844e9549d88')
 
     depends_on('cuda')
 
@@ -40,6 +41,6 @@ class Dedisp(MakefilePackage):
     def install(self, spec, prefix):
         mkdir(prefix.include)
         mkdir(prefix.lib)
-	make('install')
+        make('install')
 
 

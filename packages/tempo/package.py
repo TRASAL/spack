@@ -39,22 +39,30 @@ class Tempo(AutotoolsPackage):
     homepage = "http://tempo.sourceforge.net/"
     url      = "https://git.code.sf.net/p/tempo/tempo"
 
-    version('2018-04-24', git='https://git.code.sf.net/p/tempo/tempo', commit='13e12c')
+    version('2018-04-24', git=url, commit='13e12c')
+    version('2025-05-07', git=url, commit='aaf34c')
+
+    depends_on("c", type="build")
+    depends_on("fortran", type="build")
 
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
 
-    patch('fix_path_length.patch', level=0)
-    patch('fix_wsrt_code.patch', level=0)
+    patch(f'fix_path_length_2018_04_24.patch', when="@2018-04-24", level=0)
+    patch(f'fix_path_length_2025_05_07.patch', when="@2025-05-07")
+    patch('fix_wsrt_code_2018_04_24.patch', when="@2028-04-24", level=0)
+    patch('fix_wsrt_code_2025_05_07.patch', when="@2025-05-07")
 
-    def setup_environment(self, spack_env, run_env):
-        spack_env.set('TEMPO', self.prefix + '/tempo')
-        run_env.set('TEMPO', self.prefix + '/tempo')
+    def setup_build_environment(self, env):
+        env.set('TEMPO', self.prefix + '/tempo')
+
+    def setup_run_environment(self, env):
+        env.set('TEMPO', self.prefix + '/tempo')
 
     def install(self, spec, prefix):
-        os.mkdir('tempo', 0755)
+        os.mkdir('tempo', 0o0755)
         install_tree('clock', prefix + '/tempo/clock')
         install_tree('ephem', prefix + '/tempo/ephem')
         install('obsys.dat', prefix + '/tempo')
