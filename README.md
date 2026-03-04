@@ -17,7 +17,7 @@ spack bootstrap now
 
 This repository comes with a spack environment file to do most of the setup automatically. To create an environment named "arts" from this file and activate it:
 ```
-cd ~/spack-repo
+cd /usr/local/spack/artsrepo
 spack env create arts env.yaml
 spack env activate -p arts
 ```
