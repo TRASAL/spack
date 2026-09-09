@@ -63,6 +63,11 @@ spack concretize -f -U
 spack install
 ```
 
+Finally, regenerate module files if necessary:
+```
+spack module lmod refresh --delete-tree -y
+```
+
 # Usage
 There are two ways of using the spack environment: Through a spack view, giving access to all installed packages simultaneously, or through module files. Both methods are described here.
 
