@@ -3,9 +3,11 @@ import os
 
 class Psrchive(AutotoolsPackage):
     homepage = "http://psrchive.sourceforge.net/"
-    url = "https://downloads.sourceforge.net/project/psrchive/psrchive/2025-04-24/psrchive-2025-04-24.tar.gz"
+    url_sourceforge = "https://downloads.sourceforge.net/project/psrchive/psrchive/2025-04-24/psrchive-2025-04-24.tar.gz"
+    url = "https://gitlab.com/pulsar-astronomy/psrchive/-/releases/2026-08-15/downloads/psrchive-2026-08-15.tar.gz"
 
-    version('2025-04-24', sha256='20e3ba5dc8979af33498fc0d84a55acf2ac68c8fd854d91cf6e8bab73d65a9e3')
+    version('2025-04-24', url=url_sourceforge, sha256='20e3ba5dc8979af33498fc0d84a55acf2ac68c8fd854d91cf6e8bab73d65a9e3')
+    version('2026-08-15', sha256='724e85f9ac43e3b35f982dc7cf3e57d05d4c81494d8533b5ceaa1f2acd8bef4c')
 
     variant("x11", default=True, description="Enable GUI")
     variant("python", default=True, description="Enable Python interface")
@@ -23,7 +25,7 @@ class Psrchive(AutotoolsPackage):
     depends_on('py-numpy', when="+python")
     depends_on('swig', when="+python")
 
-    @run_before("build")
+    @run_before("build", when="@2025-04-24")
     def fix_numpy(self):
         # fix compatibility with numpy 2+
         if "+python" in self.spec and self.spec['py-numpy'].satisfies("@2:"):
