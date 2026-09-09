@@ -48,6 +48,21 @@ spack install
 
 It is possible to run multiple instances of `spack install` in parallel to speed up the installation process.
 
+## Updating packages
+If new versions of packages are added to this repo and you want to update the environment, first ensure your local copy of the repository is up to date:
+
+```
+cd /usr/local/spack/artsrepo
+git pull
+```
+
+Then enable the environment, re-run the concretizer with the force flag and, if there are no errors, run the install:
+```
+spack env activate -p arts
+spack concretize -f
+spack install
+```
+
 # Usage
 There are two ways of using the spack environment: Through a spack view, giving access to all installed packages simultaneously, or through module files. Both methods are described here.
 
