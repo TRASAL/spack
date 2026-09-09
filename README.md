@@ -56,10 +56,10 @@ cd /usr/local/spack/artsrepo
 git pull
 ```
 
-Then enable the environment, re-run the concretizer with the force flag and, if there are no errors, run the install:
+Then enable the environment, re-run the concretizer with a forced update and, if there are no errors, run the install:
 ```
 spack env activate -p arts
-spack concretize -f
+spack concretize -f -U
 spack install
 ```
 
