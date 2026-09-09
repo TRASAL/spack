@@ -81,7 +81,7 @@ module use /usr/local/spack/share/spack/lmod/linux-debian12-x86_64/Core
 ```
 The exact path depends on the operating system and system architecture, the above is correct for ARTS.
 
-Run `module avail` to get a list of available modules. In principle, a single version of each package is installed hence it is optional to specify the version number when loading a module. E.g. simply `module load tempo2` works. Dependencies are also handle automatically, e.g. loading `presto` also loads `tempo`.
+Run `module avail` to get a list of available modules. In principle, a single version of each package is installed hence it is optional to specify the version number when loading a module. E.g. simply `module load tempo2` works. Dependencies are also handled automatically, e.g. loading `presto` also loads `tempo`.
 
 ### Python packages
 Note that several packages come with Python modules as well. When one of these packages is loaded, the Python module is loaded as well, but _not_ the other way around. I.e. when you want to use e.g. the PRESTO Python modules, run either `module load python` followed by `module load presto`, or simply `module load presto`.

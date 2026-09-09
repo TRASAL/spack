@@ -7,7 +7,7 @@ class Dspsr(AutotoolsPackage):
     url = "https://gitlab.com/pulsar-astronomy/dspsr/"
 
     version('2025-02-03', url=url_sourceforge, sha256='e4c54ce91092b42c3cc54cf6046abaa5c7e5595b67ccf469e5111da5cde62c9b')
-    version('2026-09-01', git=url, commit="2aefdf1b117d49424fee8740b1b4572f92d584d0")
+    version('2026-09-01', git=url, submodules=True, commit="2aefdf1b117d49424fee8740b1b4572f92d584d0")
 
     depends_on('psrdada')
     depends_on('psrchive')
